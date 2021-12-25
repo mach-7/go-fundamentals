@@ -16,5 +16,13 @@ func main() {
 	cards := newDeck()
 	hand, _ := deal(cards, 5)
 	hand.print()
+	// Print the hand to the screen
 	fmt.Println(hand.toString())
+	// Save the deck to a file
+	err := cards.saveToFile("my_cards.txt")
+	if err != nil {
+		fmt.Println(err.Error)
+	} else {
+		fmt.Println("Saved To File ")
+	}
 }
