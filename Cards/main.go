@@ -25,4 +25,7 @@ func main() {
 	} else {
 		fmt.Println("Saved To File ")
 	}
+
+	cards2 := newDeckFromFile("my_cards.txt")
+	fmt.Println(cards2.toString())
 }
