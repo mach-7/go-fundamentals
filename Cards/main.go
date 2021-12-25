@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 /*
 A basic game of Cards
 - Create a new Deck
@@ -14,4 +16,5 @@ func main() {
 	cards := newDeck()
 	hand, _ := deal(cards, 5)
 	hand.print()
+	fmt.Println(hand.toString())
 }
