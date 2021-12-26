@@ -28,4 +28,5 @@ func TestSaveToDeckAndNewDeckFromFile(t *testing.T) {
 		t.Errorf("Expected a deck with length 52 but got %d", len(loadedDeck))
 	}
 
+	os.Remove(filename)
 }
