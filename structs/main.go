@@ -17,7 +17,7 @@ type person struct {
 
 func main() {
 	//mylocation := location{32.005, 71.044}
-	person := person{
+	p := person{
 		firstname: "Albus",
 		lastname:  "Dumbledore",
 		gender:    "Male",
@@ -27,5 +27,25 @@ func main() {
 			longitude: 84.0,
 		},
 	}
-	fmt.Printf("%+v", person)
+	p.print()
+	// pass by value does not change the value of the original struct
+	p.updateName("Cornelius")
+	p.print()
+
+	//Pass by reference on the other hand results in modification of the original struct
+	pointerP := &p
+	pointerP.updateNamePointer("Cornelius")
+	p.print()
+}
+
+func (p person) updateName(newName string) {
+	p.firstname = newName
+}
+
+func (p *person) updateNamePointer(newName string) {
+	(*p).firstname = newName
+}
+
+func (p person) print() {
+	fmt.Printf("\n%+v", p)
 }
