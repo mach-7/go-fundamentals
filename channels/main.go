@@ -24,8 +24,8 @@ func main() {
 	}
 
 	// an infinite loop
-	for {
-		go checkLink(<-ch, ch)
+	for link := range ch {
+		go checkLink(link, ch)
 	}
 }
 
