@@ -23,9 +23,9 @@ func main() {
 		go checkLink(link, ch)
 	}
 
-	// wait for messages on the channel for all the corresponding checkLink method calls
-	for i := 0; i < len(links); i++ {
-		fmt.Println(<-ch)
+	// an infinite loop
+	for {
+		go checkLink(<-ch, ch)
 	}
 }
 
@@ -34,10 +34,10 @@ func checkLink(link string, ch chan string) {
 	_, err := http.Get(link)
 	if err != nil {
 		fmt.Println(link, "might be Down")
-		ch <- "Might be Down"
+		ch <- link
 		return
 	}
 
 	fmt.Println(link, "is Up")
-	ch <- "Link is Up"
+	ch <- link
 }
